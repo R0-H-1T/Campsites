@@ -218,6 +218,9 @@ app.use((err, req, res, next) => {
 // app.use(err, req, res, next => {
 //     res.send('Oh Boy, Something went wrong!!')
 // })
-app.listen(3000, ()=>{
-    console.log('Serving on port 3000')
+
+
+const port = process.env.PORT || 3000
+app.listen(port, ()=>{
+    console.log(`Serving on port ${port}`)
 })
