@@ -1,8 +1,16 @@
+//STEP 1: Start mongo.bat 
+// Stel2 : run nodemon app.js
+
+
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
 }
 
-// console.log(process.env.secret);
+console.log(process.env.secret);
+
+
+require('dotenv').config();
+
 const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
