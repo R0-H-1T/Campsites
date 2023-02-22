@@ -1,14 +1,14 @@
-//STEP 1: Start mongo.bat 
+//STEP 1: Start mongo.bat from d:/desktop2/
 // Stel2 : run nodemon app.js
 
 
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config();
-}
+// if(process.env.NODE_ENV !== 'production'){
+//     require('dotenv').config();
+// }
 
-console.log(process.env.secret);
+//console.log(process.env.secret);
 
-
+//doing the following for requiring the variable in .env files
 require('dotenv').config();
 
 const express = require('express')
@@ -31,7 +31,12 @@ const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
 // process.env.DB_URL
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
+
+// Mongo URL updated; for running locally the IP of localhost needed to be changed
+// cause of the error: due to the update of Node to version v18.13  (earlier was 16)
+
+
 // 'mongodb://localhost:27017/yelp-camp'
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
