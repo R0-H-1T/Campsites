@@ -6,7 +6,7 @@ const router = express.Router();
 const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage });
-
+ 
 
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
 

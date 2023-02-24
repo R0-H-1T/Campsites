@@ -70,6 +70,5 @@ const seeDB = async()=>{
 }
 
 seeDB().then(()=>{
-    console.log('Records entered successfully')
     mongoose.connection.close()
 })
