@@ -2,6 +2,7 @@ const cities=require('./cities')
 const mongoose = require('mongoose')
 const Campground = require('../models/campground')
 const {places, descriptors} = require('./seedHelpers')
+const formattedDate = require('../functions')
 
 // if (process.env.NODE_ENV !== 'production') {
 //     require('dotenv').config();
@@ -43,7 +44,8 @@ const seeDB = async()=>{
         const price=Math.floor(Math.random()*20)+10
         const camp=new Campground({
             author: '61a5985b281afc4f54c734c5',
-            location: `${cities[random1000].city}, ${cities[random1000].state}`,
+            created_at: formattedDate(),
+            location: `${cities[random1000].city}, ${cities[random1000].state}`,    
             title: `${sample(descriptors)} ${sample(places)}`,
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. At distinctio dolore architecto excepturi quasi! Et reprehenderit, ea quae sed modi porro facere? Sapiente libero odit temporibus ratione, excepturi a aliquam?',
             price,
