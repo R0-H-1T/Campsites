@@ -3,7 +3,8 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken })
 const { cloudinary } = require('../cloudinary');
-const formattedDate = require('../functions')
+const formattedDate = require('../functions');
+//const final_result = require('../functions');
 
 
 module.exports.index = async (req, res) => {
@@ -22,6 +23,30 @@ module.exports.createCampground = async (req, res, next) => {
     }).send();
     const campground = new Campground(req.body.campground);
     campground.geometry = geoData.body.features[0].geometry;
+
+    const reqfiles = req.files.map( f => (f.mimetype));
+    console.log(reqfiles)
+    const checkFile = (item) => {
+        if (item.slice(0, 5) !== 'image'){
+            return false
+        }
+        let res = item.slice(6);
+    
+        if (res == 'jpeg' || res == 'jpg' || res == 'png'){
+            return true
+        }else{
+            return false
+        }
+    }   
+    const final_result = (file_arr) => {
+        let result = file_arr.map(f => checkFile(f))
+        return result.includes(false)
+    }
+    if (final_result(reqfiles) == true){
+        req.flash('error', 'Accepted files types are jpeg, png, jpg only');
+        return res.redirect('/campgrounds/new');
+    }
+
     campground.images = req.files.map(f=> ({ url: f.path, filename: f.filename }));
     campground.author = req.user._id;
     campground.created_at = formattedDate();
