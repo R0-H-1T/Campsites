@@ -28,7 +28,30 @@
                         <div class="mb-3">
                             <label class="form-label" for="price">Campground Price</label>
                             <div class="input-group">
-                                <span class="input-group-text" id="price-label">$</span>
+
+
+                                <select class="form-select" aria-label="Default select example" 
+                                name="campground[currency]" id="currency">
+                                    <option selected value="">Select currency</option>
+                                    <option value="INR">INR - Indian Rupee</option>
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="CAD">CAD - Canadian Dollar</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="AUD">AUD - Australian Dollar</option>
+                                    <option value="JPY">JPY - Japanese Yen</option>
+                                    <option value="NZD">NZD - New Zealand Dollar</option>
+                                    <option value="ARS">ARS - Argentine Preso</option>
+                                    <option value="LKR">LKR - Sri Lankan Rupee</option>
+                                    <option value="NGN">NGN - Nigerian Naira</option>
+                                </select>
+
+
+                                <!-- <span class="input-group-text" id="price-label">Rs</span> -->
+
+
+
+
                                 <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
                                     required aria-describedby="price-label" name="campground[price]">
                                 <div class="valid-feedback">Looks Good!</div>

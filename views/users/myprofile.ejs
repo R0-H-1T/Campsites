@@ -12,19 +12,19 @@
                     <h5 class="card-title">Your Profile</h5>
                     <form action="/profile?_method=PUT" method="POST" class="validated-form" novalidate>
                         <div class="mb-3">
-                            <label class="form-label" for="username">Username</label>
+                            <label class="form-label" for="username">Update Username?</label>
                             <input class="form-control" type="text" id="username" name="user1[username]" value="<%= myProfile.username%>" required autofocus>
                             <div class="valid-feedback">Looks Good!</div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="email">Email</label>
+                            <label class="form-label" for="email">Update Email?</label>
                             <input class="form-control" type="email" id="email" name="user1[email]" value="<%= myProfile.email%>" required>
                             <div class="valid-feedback">Looks Good!</div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="password">Password</label>
+                            <label class="form-label" for="password">Update Password?</label>
                             <input class="form-control" type="password" id="password" name="user1[password]" required>
                             <div class="valid-feedback">Looks Good!</div>
                         </div>

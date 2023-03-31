@@ -50,6 +50,7 @@ const seeDB = async()=>{
             title: `${sample(descriptors)} ${sample(places)}`,
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. At distinctio dolore architecto excepturi quasi! Et reprehenderit, ea quae sed modi porro facere? Sapiente libero odit temporibus ratione, excepturi a aliquam?',
             price,
+            currency: 'INR',
             geometry: { 
                 "type" : "Point", 
                 "coordinates" : [
