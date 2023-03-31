@@ -5,6 +5,7 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken })
 const { cloudinary } = require('../cloudinary');
 const formattedDate = require('../functions');
 //const final_result = require('../functions');
+const User = require('../models/user');
 
 
 module.exports.index = async (req, res) => {
@@ -25,7 +26,6 @@ module.exports.createCampground = async (req, res, next) => {
     campground.geometry = geoData.body.features[0].geometry;
 
     const reqfiles = req.files.map( f => (f.mimetype));
-    console.log(reqfiles)
     const checkFile = (item) => {
         if (item.slice(0, 5) !== 'image'){
             return false
@@ -77,6 +77,24 @@ module.exports.renderEditForm = async (req, res) => {
         return res.redirect('/campgrounds');
     }
     res.render('campgrounds/edit', { campground })
+}
+
+
+
+module.exports.authorscampgrounds = async(req, res) => {
+    //console.log('Hittting this route')
+    const { username } = req.params;
+    //console.log("Username: " + username)
+    try{
+        const person = await User.find({username: username});
+        //console.log(person[0]._id);
+        const campgrounds = await Campground.find({author: person[0]._id});
+        //console.log(campgrounds)
+        //console.log('hello')
+        res.render('campgrounds/authors_camps', {campgrounds, person} );
+    }catch(e){
+        console.log(e)
+    }
 }
 
 module.exports.updateCampground = async (req, res) => {

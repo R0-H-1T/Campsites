@@ -17,7 +17,10 @@ router.route('/')
     .post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgrounds.createCampground));
     
 
+    
 router.get('/new', isLoggedIn, campgrounds.renderNewForm);
+    
+router.get('/author/:username', catchAsync(campgrounds.authorscampgrounds))
 
 router.route('/:id')
     .get(catchAsync(campgrounds.showCampgrounds))
