@@ -22,6 +22,14 @@ router.route('/login')
     .post( passport.authenticate('local', { failureFlash: true, failureRedirect: '/login'}), users.login);
 
 
+router.route('/yourcamp')
+    .get(users.yourcampgrounds)
+
+router.route('/profile')
+    .get(users.showProfile)
+    .put(catchAsync(users.updateProfile))
+
 router.get('/logout', users.logout);
+
 
 module.exports = router;
