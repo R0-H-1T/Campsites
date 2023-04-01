@@ -23,19 +23,60 @@
                             <div class="valid-feedback">Looks Good!</div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="password">Update Password?</label>
-                            <input class="form-control" type="password" id="password" name="user1[password]" required>
-                            <div class="valid-feedback">Looks Good!</div>
-                        </div>
+                           <div class="mb-3">
+                                <label class="form-label" id="passLabel" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" onkeyup='passLength(); check();' required>
+                                <!-- <div class="valid-feedback">Looks Good!</div> -->
+                            </div>
 
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-success">Update Profile</button>
-                        </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="conf_password">Confirm Password</label>
+                                <input class="form-control" type="password" id="conf_password" name="password" onkeyup='check();' required>
+                                <!-- <div class="valid-feedback">Looks Good!</div> -->
+                            </div>
+
+                            <span id="message"></span>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success" id="submit">Update profile</button>
+                            </div>
                     </form>
-                </div>
-
-                
+                </div> 
             </div>
         </div>
+    </div>
+
+
+
+        <script>
+            var passLength = function() {
+                
+                if(document.getElementById('password').value.length <= 6){
+                    document.getElementById('passLabel').style.color = 'red';
+                    document.getElementById('passLabel').innerHTML = 'Password must be greater than 6 characters';
+                    document.getElementById('submit').disabled = true;
+                } else {
+                    document.getElementById('passLabel').style.color = 'green';
+                    document.getElementById('passLabel').innerHTML = 'Looks good';
+                    document.getElementById('submit').disabled = false;
+                }
+            }
+            
+            var check = function() {
+                if (document.getElementById('password').value == document.getElementById('conf_password').value) {
+                    // if(document.getElementById('password').value.length <= 6){
+                    //     document.getElementById('message').innerHTML = 'Password must be greater than 6 characters';
+                        
+                    // }
+                  document.getElementById('message').style.color = 'green'; 
+                  document.getElementById('message').innerHTML = ' ';
+                  document.getElementById('submit').disabled = false;
+                } else {
+                  document.getElementById('message').style.color = 'red';
+                  document.getElementById('message').innerHTML = 'password not matching';
+                  document.getElementById('submit').disabled = true;
+                }
+            }
+            </script>
         
